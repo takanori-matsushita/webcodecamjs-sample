@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Demo</title>
+</head>
+
+<body>
+  <p>バーコードを読み取って下さい</p>
+  <canvas></canvas>
+  <br>
+  <label for="isbn">ISBN:</label>
+  <input id="isbn" type="text" name="isbn" value="">
+  <script type="text/javascript" src="js/qrcodelib.js"></script>
+  <script type="text/javascript" src="js/webcodecamjs.js"></script>
+  <script type="text/javascript">
+    var txt = "innerText" in HTMLElement.prototype ? "innerText" : "textContent";
+    var arg = {
+      resultFunction: function (result) {
+        document.getElementById('isbn').value = result.code;
+      }
+    };
+    new WebCodeCamJS("canvas").init(arg).play();
+  </script>
+</body>
+
+</html>
